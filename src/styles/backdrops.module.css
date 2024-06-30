@@ -1,0 +1,10 @@
+.main_bg {
+  background-image: url(../../public/assets/backdrops/moutain.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+.not_found_bg {
+  background-image: url(../../public/assets/backdrops/404.jpg);
+  background-size: cover;
+  background-position: center;
+}
