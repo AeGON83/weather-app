@@ -1,5 +1,9 @@
 # My Next.js Weaher app Project Setup
 
+# public deployment
+
+https://weather-app-five-hazel-98.vercel.app/
+
 ## Screen shots
 
 ![ss 1](./public/ss1.png)
