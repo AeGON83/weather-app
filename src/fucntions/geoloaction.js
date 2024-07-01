@@ -29,17 +29,25 @@ export async function getLatLon() {
   });
 }
 
-export async function getLocation(setPos, showMsg) {
-  setPos({ status: "loading" });
+export async function getLocation(setPos, showMsg, route) {
+  setPos((old) => {
+    return { ...old, status: "loading", count: old.count + 1 };
+  });
   const pos = await getLatLon();
   if (pos.status == "denied") {
     showMsg("Access denied, showing data of default location Surat", {
       variant: "info",
     });
+    route("/Surat");
   } else if (pos.status == "erorr") {
     showMsg("somthing went wrong, showing default location Surat", {
       variant: "error",
     });
+    route("/Surat");
+  } else if (pos.status == "success") {
+    route(`/latlon?lat=${pos.position.lat}&lon=${pos.position.lon}`);
   }
-  setPos(pos);
+  setPos((old) => {
+    return { ...old, ...pos };
+  });
 }

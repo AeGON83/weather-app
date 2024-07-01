@@ -13,28 +13,52 @@ import {
   Typography,
 } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useRouter } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
 import { useContext, useEffect, useState } from "react";
 
 export default function AccessLoactionModal() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const { pos, setPos } = useContext(GlobalContext);
   const loading = pos.status == "loading";
 
   useEffect(() => {
     async function initialCheck() {
+      // if user has already granted permission
+      if (pos.status == "success") {
+        router.push(`/latlon?lat=${pos.position.lat}&lon=${pos.position.lon}`);
+        return;
+      }
+      // check for permission
       const hasPermission = await hasLocationPermission();
+      // access location
       if (hasPermission) {
-        getLocation(setPos, enqueueSnackbar);
-      } else {
+        getLocation(setPos, enqueueSnackbar, router.push);
+      }
+      //  if user previously denied premission ask again
+      else if (
+        ["error", "denied", "unset"].includes(pos.status) &&
+        pos.count < 3
+      ) {
         setOpen(true);
+      }
+      // number of denials reached 3, show default location
+      else {
+        enqueueSnackbar(
+          "Maximum limit for dinials reached, showing default location surat",
+          {
+            variant: "error",
+          }
+        );
+        router.push("/Surat");
       }
     }
     initialCheck();
   }, []);
 
   async function handleConfirm() {
-    await getLocation(setPos, enqueueSnackbar);
+    await getLocation(setPos, enqueueSnackbar, router.push);
     setOpen(false);
   }
 
@@ -42,7 +66,10 @@ export default function AccessLoactionModal() {
     enqueueSnackbar("Access denied, showing default location Surat", {
       variant: "info",
     });
-    setPos({ status: "denied" });
+    setPos((old) => {
+      return { ...old, status: "denied", count: old.count + 1 };
+    });
+    router.push("/Surat");
     setOpen(false);
   }
 

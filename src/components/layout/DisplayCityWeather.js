@@ -1,6 +1,7 @@
 import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import bgStyles from "@/styles/backdrops.module.css";
+import cityStyles from "@/styles/city.module.css";
 
 import logo1 from "../../../public/assets/icons/humidity.svg";
 import logo2 from "../../../public/assets/icons/sunrise.svg";
@@ -23,18 +24,7 @@ export default function DisplayCityWeather({
   icon,
 }) {
   return (
-    <Container
-      maxWidth="xl"
-      sx={{
-        flexGrow: 1,
-        display: "flex",
-        flexDirection: "column",
-        px: 4,
-        pt: 2,
-        pb: 4,
-      }}
-      disableGutters
-    >
+    <Container className={cityStyles.container} maxWidth="xl" disableGutters>
       <Box
         sx={{
           flexGrow: 1,
@@ -45,29 +35,13 @@ export default function DisplayCityWeather({
         }}
       >
         <Box
-          className={`${bgStyles.main_bg} shadow_4`}
+          className={`${bgStyles.main_bg} shadow_4 ${cityStyles.temp_container}`}
           sx={{
-            flexGrow: 1,
             maxHeight: { ss: 600, xs: 600, sm: 400 },
-            minHeight: 300,
-            width: "100%",
-            borderRadius: 4,
-            display: "flex",
             flexDirection: { ss: "column", xs: "column", sm: "row" },
             justifyContent: { ss: "center", xs: "center", sm: "space-between" },
-            px: 2,
-            py: { ss: 4, xs: 4, sm: 2 },
             backgroundSize: { ss: "200% 130%", xs: "200% 130%", sm: "cover" },
-            "> div": {
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-            },
-            "* > p": {
-              color: "#fff",
-              textShadow: "-1px 7px 9px rgba(51, 51, 51, 0.25)",
-              lineHeight: "100%",
-            },
+            py: { ss: 4, xs: 4, sm: 2 },
           }}
         >
           <Stack

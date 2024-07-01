@@ -6,9 +6,14 @@ import {
 } from "@/fucntions/getParams";
 import React from "react";
 
-export default async function CityWeather({ params: { city = "Surat" } }) {
-  const data = await api({ q: city });
-  const forecast = await api({ q: city }, "forecast");
+export default async function CityWeather({
+  params: { city = "Surat" },
+  searchParams: { lat, lon },
+}) {
+  let params = { q: city };
+  if (city == "latlon" && lat && lon) params = { lat, lon };
+  const data = await api(params);
+  const forecast = await api(params, "forecast");
 
   return (
     <DisplayCityWeather

@@ -1,0 +1,27 @@
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  padding-top: 16px;
+}
+
+.temp_container {
+  flex-grow: 1;
+  min-height: 300px;
+  width: 100%;
+  border-radius: 16px;
+  display: flex;
+  padding: 0 16px;
+}
+
+.temp_container > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.temp_container * > p {
+  color: #fff;
+  text-shadow: -1px 7px 9px rgba(51, 51, 51, 0.25);
+  line-height: 100%;
+}

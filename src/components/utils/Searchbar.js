@@ -29,14 +29,14 @@ export default function Searchbar({ autofocus = false }) {
       <input
         type="text"
         autoFocus={autofocus}
-        className={navStyle.search__input}
+        className={navStyle.search_input}
         placeholder="Search city name"
         onChange={handleChnage}
         onKeyDown={handleKeyPress}
       />
-      <button className={navStyle.search__button} onClick={handleSubmit}>
+      <button className={navStyle.search_button} onClick={handleSubmit}>
         <svg
-          className={navStyle.search__icon}
+          className={navStyle.search_icon}
           aria-hidden="true"
           viewBox="0 0 24 24"
         >

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { lato, poppins } from "@/fonts";
 import Searchbar from "../utils/Searchbar";
+import { LocationOn } from "@mui/icons-material";
 
 function Navbar() {
   return (
@@ -18,17 +19,9 @@ function Navbar() {
       }}
     >
       <Box
+        className="nav"
         maxWidth="xl"
         sx={{
-          display: "flex",
-          width: "100%",
-          alignItems: "center",
-          backgroundColor: "#FFF",
-          px: 4,
-          py: 2,
-          zIndex: 21,
-          margin: "0 auto",
-          gap: 1,
           justifyContent: { ss: "center", xs: "center", sm: "space-between" },
           flexWrap: { ss: "wrap", xs: "wrap", sm: "no-wrap" },
         }}
@@ -37,7 +30,6 @@ function Navbar() {
           direction={"row"}
           alignItems={"center"}
           gap={1}
-          border={1}
           backgroundColor={"primary.light"}
           py={1}
           px={2}
@@ -46,8 +38,8 @@ function Navbar() {
           <Link href={"/"}>
             <Box
               sx={{
-                width: { ss: 25, xs: 30, sm: 40, md: 45 },
-                height: { ss: 25, xs: 30, sm: 40, md: 45 },
+                width: { ss: 25, xs: 30, sm: 35, md: 35 },
+                height: { ss: 25, xs: 30, sm: 35, md: 35 },
                 cursor: "pointer",
               }}
             >
@@ -66,16 +58,28 @@ function Navbar() {
           <Link href={"/"}>
             <Typography
               fontFamily={lato.style.fontFamily}
-              fontSize={{ ss: 22, xs: 24, sm: 26, md: 28 }}
+              fontSize={22}
               fontWeight={700}
-              lineHeight={"100%"}
-              mr={"auto"}
               color={"primary.main"}
             >
               Rajan
             </Typography>
           </Link>
         </Stack>
+        <Box
+          sx={{
+            mr: {
+              ss: 0,
+              xs: 0,
+              sm: "auto",
+            },
+            animation: "wiggle 3s linear infinite",
+          }}
+        >
+          <Link href="/">
+            <LocationOn sx={{ width: 30, height: 30 }} color="primary" />
+          </Link>
+        </Box>
         <Searchbar />
       </Box>
     </AppBar>
