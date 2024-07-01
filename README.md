@@ -24,5 +24,6 @@ git clone https://github.com/AeGON83/weather-app.git
 cd weater-app
 npm install
 echo "NEXT_PUBLIC_OPEN_WEATHER_MAP=<your api key>" > .env.local
-npm run dev
+npm run build
+npm run start
 ```
