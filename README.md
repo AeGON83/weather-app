@@ -15,6 +15,10 @@ Follow the steps below to set up your Next.js project:
 
 First, clone the repository to your local machine using the following command:
 
+get openweather api key and put it into .env.local file with key NEXT_PUBLIC_OPEN_WEATHER_MAP
+
+### dont be worried your api key will not be exposed to client and can not be ispected in nework tab also
+
 ```bash
 git clone https://github.com/AeGON83/weather-app.git
 cd weater-app
