@@ -35,7 +35,7 @@ export default function DisplayCityWeather({
         }}
       >
         <Box
-          className={`${bgStyles.main_bg} shadow_4 ${cityStyles.temp_container}`}
+          className={`${bgStyles.main_bg} shadow_4 ${cityStyles.temp_container} entry_animation`}
           sx={{
             maxHeight: { ss: 600, xs: 600, sm: 400 },
             flexDirection: { ss: "column", xs: "column", sm: "row" },
@@ -88,6 +88,8 @@ export default function DisplayCityWeather({
           </Stack>
         </Box>
         <Box
+          key={temp}
+          className="entry_animation dealy_3"
           sx={{
             maxWidth: { ss: 1000, xs: 1000, sm: 1000, md: 450 },
             borderRadius: 4,
@@ -104,6 +106,7 @@ export default function DisplayCityWeather({
           </Box>
         </Box>
         <Box
+          className="entry_animation dealy_3"
           sx={{
             flexBasis: "30%",
             borderRadius: 4,
