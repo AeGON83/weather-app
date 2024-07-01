@@ -12,7 +12,6 @@ import bgRain from "../../../public/assets/backdrops/Rain.jpg";
 import bgClear from "../../../public/assets/backdrops/Clear.jpeg";
 import bgClouds from "../../../public/assets/backdrops/Clouds.jpg";
 import bgSnow from "../../../public/assets/backdrops/Snow.jpg";
-import bgThunderstorm from "../../../public/assets/backdrops/Thunderstorm.jpg";
 import Image from "next/image";
 
 export default function DisplayCityWeather({
@@ -177,7 +176,7 @@ function IconBox({ name, icon, value }) {
   );
 }
 
-function ForecastBox({ icon, temp, w1, w2, date }) {
+function ForecastBox({ icon, temp, w1, date }) {
   return (
     <Box sx={{ display: "flex", gap: 2, flexBasis: "45%", flexGrow: 1 }}>
       <Avatar
@@ -206,6 +205,5 @@ function getBgImage(conditon) {
   if (conditon == "Rain") return bgRain;
   if (conditon == "Clouds") return bgClouds;
   if (conditon == "Snow") return bgSnow;
-  if (conditon == "Thunderstorm") return bgThunderstorm;
   else return bgClear;
 }
