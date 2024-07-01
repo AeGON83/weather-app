@@ -1,4 +1,4 @@
-import { Lato, Open_Sans, Oswald, Poppins } from "next/font/google";
+import { Lato, Oswald, Poppins } from "next/font/google";
 
 export const oswald = Oswald({
   subsets: ["latin"],
